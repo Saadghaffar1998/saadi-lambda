@@ -1,0 +1,9 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo "Uploading Lambda function to S3"
+      - aws s3 cp lambda_function.zip s3://saad-lambda/lambda_function.zip
+artifacts:
+  files: []
