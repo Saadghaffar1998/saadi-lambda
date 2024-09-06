@@ -2,17 +2,19 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      python: 3.8  # Change this based on your runtime version
     commands:
       - echo Installing dependencies
-      # Add any dependency installation commands here, if needed
-  pre_build:
-    commands:
-      - echo Preparing to package Lambda function
+      - pip install -r requirements.txt
+
   build:
     commands:
-      - echo Packaging Lambda function
-      - zip -r lambda-function.zip lambda_function.py
+      - echo Building the Lambda deployment package
+      - zip -r lambda-function.zip lambda_function.py  # Adjust the path if needed
+
 artifacts:
   files:
-    - lambda-function.zip
+    - lambda-function.zip  # This will be the artifact produced by CodeBuild
+
 
