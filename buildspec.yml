@@ -1,9 +1,18 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      - echo Installing dependencies
+      # Add any dependency installation commands here, if needed
+  pre_build:
+    commands:
+      - echo Preparing to package Lambda function
   build:
     commands:
-      - echo "Uploading Lambda function to S3"
-      - aws s3 cp lambda_function.zip s3://saad-lambda/lambda_function.zip
+      - echo Packaging Lambda function
+      - zip -r lambda-function.zip lambda_function.py
 artifacts:
-  files: []
+  files:
+    - lambda-function.zip
+
