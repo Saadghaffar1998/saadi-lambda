@@ -11,10 +11,7 @@ phases:
   build:
     commands:
       - echo Building the Lambda deployment package
-      - zip -r lambda-function.zip lambda_function.py  # Adjust the path if needed
-
-artifacts:
-  files:
-    - lambda-function.zip  # This will be the artifact produced by CodeBuild
+      - zip -r lambda-function.zip lambda_function.py  
+      - aws s3 cp lambda-function.zip s3://saadi-lambda/  
 
 
